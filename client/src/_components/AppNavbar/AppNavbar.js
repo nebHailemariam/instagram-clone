@@ -30,7 +30,7 @@ const LoggedInNavbar = () => {
               <Nav>
                 <Container>
                   <Row>
-                    <Col className="brand-style">
+                    <Col className="brand-style content-style">
                       <Navbar.Brand href="#home">
                         <img
                           src={logo}
@@ -41,7 +41,7 @@ const LoggedInNavbar = () => {
                         />
                       </Navbar.Brand>
                     </Col>
-                    <Col sm="auto" className="hide-element">
+                    <Col sm="auto" className="hide-content">
                       <Form>
                         <Search
                           style={{
@@ -54,40 +54,39 @@ const LoggedInNavbar = () => {
                         <FormControl
                           type="search"
                           placeholder="        Search"
-                          className="me-2"
                           aria-label="Search"
                           className="light-background-color"
                         />
                       </Form>
                     </Col>
-                    <Col sm="auto" style={{ marginLeft: "3rem" }}>
+                    <Col sm="auto" className="icons-style">
                       <Row>
-                        <Col sm="auto">
+                        <Col>
                           <Nav.Item>
                             <HouseDoor className="icon-style" size="1.6rem" />
                           </Nav.Item>
                         </Col>
-                        <Col sm="auto">
+                        <Col>
                           <Nav.Item>
                             <ChatQuote className="icon-style" size="1.4rem" />
                           </Nav.Item>
                         </Col>
-                        <Col sm="auto">
+                        <Col>
                           <Nav.Item>
                             <PlusSquare className="icon-style" size="1.4rem" />
                           </Nav.Item>
                         </Col>
-                        <Col sm="auto">
+                        <Col>
                           <Nav.Item>
                             <CompassFill className="icon-style" size="1.4rem" />
                           </Nav.Item>
                         </Col>
-                        <Col sm="auto">
+                        <Col>
                           <Nav.Item>
                             <Heart className="icon-style" size="1.4rem" />
                           </Nav.Item>
                         </Col>
-                        <Col sm="auto">
+                        <Col>
                           <Nav.Item>
                             <PersonCircle
                               className="icon-style"
