@@ -2,8 +2,8 @@ import { userConstants } from "../_constants/user.constants";
 
 let currentUser = JSON.parse(localStorage.getItem("currentUser"));
 const initialUserState = currentUser
-  ? { loggedIn: true, user: currentUser }
-  : { loggedIn: false };
+  ? { isLoggedIn: true, user: currentUser }
+  : { isLoggedIn: false };
 
 const authentication = (state = initialUserState, action) => {
   if (action.type === userConstants.LOGIN_REQUEST) {

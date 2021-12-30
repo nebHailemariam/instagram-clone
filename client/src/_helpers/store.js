@@ -7,7 +7,7 @@ import thunk from "redux-thunk";
 const logger = createLogger();
 
 const store = configureStore(
-  { reducer: { rootReducer } },
+  { reducer: rootReducer },
   applyMiddleware(logger, thunk)
 );
 
