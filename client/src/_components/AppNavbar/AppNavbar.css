@@ -7,23 +7,24 @@
   border-bottom: 1px solid #ccc;
 }
 
-.hide-element {
+.hide-content {
   display: block !important;
 }
 
 .brand-style {
-  margin-left: 10rem !important;
   margin-top: 0.4rem !important;
   margin-right: 11rem !important;
   position: "absolute" !important;
 }
 
+.icons-style {
+  margin-left: 0rem !important;
+}
+
 /* Large devices (computers, 768px and up) */
 @media (min-width: 992px) and (max-width: 1400px) {
   .brand-style {
-    margin-left: 0 !important;
     margin-top: 0rem !important;
-    margin-right: 0rem !important;
     position: "absolute" !important;
   }
 }
@@ -31,12 +32,10 @@
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
   .brand-style {
-    margin-left: 0 !important;
     margin-top: 0rem !important;
-    margin-right: 0rem !important;
     position: "absolute" !important;
   }
-  .hide-element {
+  .hide-content {
     display: none !important;
   }
 }
@@ -44,12 +43,10 @@
 /* Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) and (max-width: 767.98px) {
   .brand-style {
-    margin-left: 0 !important;
     margin-top: 0rem !important;
-    margin-right: 0rem !important;
     position: "absolute" !important;
   }
-  .hide-element {
+  .hide-content {
     display: none !important;
   }
 }
@@ -57,12 +54,10 @@
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
   .brand-style {
-    margin-left: 0 !important;
     margin-top: 0rem !important;
-    margin-right: 0rem !important;
     position: "absolute" !important;
   }
-  .hide-element {
+  .hide-content {
     display: none !important;
   }
 }

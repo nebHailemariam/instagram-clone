@@ -4,3 +4,35 @@
 .light-font-color {
   color: #8e8e8e;
 }
+
+.content-style {
+  margin-left: 11rem !important;
+}
+
+/* Large devices (computers, 768px and up) */
+@media (min-width: 992px) and (max-width: 1400px) {
+  .content-style {
+    margin-left: 0rem !important;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .content-style {
+    margin-left: 0rem !important;
+  }
+}
+
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .content-style {
+    margin-left: 0rem !important;
+  }
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+  .content-style {
+    margin-left: 0rem !important;
+  }
+}
