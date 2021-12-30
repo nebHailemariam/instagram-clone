@@ -30,7 +30,7 @@ const LoggedInNavbar = () => {
               <Nav>
                 <Container>
                   <Row>
-                    <Col style={{ marginLeft: "10rem", marginRight: "11rem" }}>
+                    <Col className="brand-style">
                       <Navbar.Brand href="#home">
                         <img
                           src={logo}
@@ -41,7 +41,7 @@ const LoggedInNavbar = () => {
                         />
                       </Navbar.Brand>
                     </Col>
-                    <Col sm="auto">
+                    <Col sm="auto" className="hide-element">
                       <Form>
                         <Search
                           style={{
