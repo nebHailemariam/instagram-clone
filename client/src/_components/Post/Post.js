@@ -24,6 +24,7 @@ const Post = (props) => {
                 width="30rem"
                 height="30rem"
                 src="https://techstacker.com/static/d695fe69198cc4558284e9aec1a4892c/4148e/react.png"
+                alt="post"
               ></img>
             )}
             &nbsp; &nbsp; Avocado
