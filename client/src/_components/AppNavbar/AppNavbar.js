@@ -102,7 +102,13 @@ const LoggedInNavbar = () => {
                               size="1.6rem"
                               onClick={ToggleProfileDropDown}
                             />
-                            <NavDropdown show={showProfileDropDown}>
+                            <NavDropdown
+                              show={showProfileDropDown}
+                              autoClose="outside"
+                              onToggle={(isOpen) => {
+                                ToggleProfileDropDown();
+                              }}
+                            >
                               <NavDropdown.Item onClick={ToggleProfileDropDown}>
                                 <PersonCircle className="icon-dropdown-style" />
                                 Profile

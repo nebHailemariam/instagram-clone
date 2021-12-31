@@ -3,6 +3,8 @@ import { Col, Container, Row } from "react-bootstrap";
 import "./App.css";
 import AppNavbar from "./_components/AppNavbar/AppNavbar";
 import Home from "./pages/Home/Home";
+import { Routes, Route } from "react-router-dom";
+import { Profile } from "./pages/Profile/Profile";
 
 function App() {
   return (
@@ -11,7 +13,10 @@ function App() {
       <Container>
         <Row>
           <Col className="content-style" sm={6}>
-            <Home />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/profile" element={<Profile />} />
+            </Routes>
           </Col>
         </Row>
       </Container>
