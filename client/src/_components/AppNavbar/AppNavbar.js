@@ -6,12 +6,16 @@ import {
   FormControl,
   Nav,
   Navbar,
+  NavDropdown,
   Row,
 } from "react-bootstrap";
 import logo from "../../assets/imgs/logo.png";
 import {
+  ArrowRepeat,
+  Bookmark,
   ChatQuote,
   CompassFill,
+  GearWide,
   Heart,
   HouseDoor,
   PersonCircle,
@@ -19,8 +23,13 @@ import {
   Search,
 } from "react-bootstrap-icons";
 import "./AppNavbar.css";
+import { useState } from "react";
 
 const LoggedInNavbar = () => {
+  const [showProfileDropDown, setShowProfileDropDown] = useState(false);
+  const ToggleProfileDropDown = () => {
+    setShowProfileDropDown(!showProfileDropDown);
+  };
   return (
     <div>
       <Navbar bg="white" expand="lg">
@@ -91,7 +100,30 @@ const LoggedInNavbar = () => {
                             <PersonCircle
                               className="icon-style"
                               size="1.6rem"
+                              onClick={ToggleProfileDropDown}
                             />
+                            <NavDropdown show={showProfileDropDown}>
+                              <NavDropdown.Item onClick={ToggleProfileDropDown}>
+                                <PersonCircle className="icon-dropdown-style" />
+                                Profile
+                              </NavDropdown.Item>
+                              <NavDropdown.Item onClick={ToggleProfileDropDown}>
+                                <Bookmark className="icon-dropdown-style" />
+                                Saved
+                              </NavDropdown.Item>
+                              <NavDropdown.Item onClick={ToggleProfileDropDown}>
+                                <GearWide className="icon-dropdown-style" />
+                                Settings
+                              </NavDropdown.Item>
+                              <NavDropdown.Item onClick={ToggleProfileDropDown}>
+                                <ArrowRepeat className="icon-dropdown-style" />
+                                Switch Account
+                              </NavDropdown.Item>
+                              <NavDropdown.Divider />
+                              <NavDropdown.Item onClick={ToggleProfileDropDown}>
+                                Logout
+                              </NavDropdown.Item>
+                            </NavDropdown>
                           </Nav.Item>
                         </Col>
                       </Row>

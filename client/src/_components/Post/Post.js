@@ -1,6 +1,7 @@
 import "./Post.css";
 import { Card, Col, Row } from "react-bootstrap";
 import {
+  Bookmark,
   Chat,
   Heart,
   HeartFill,
@@ -53,7 +54,7 @@ const Post = (props) => {
             />
           </Col>
           <Col xs={2} md={1}>
-            <ThreeDots />
+            <Bookmark size="1.3rem" />
           </Col>
         </Row>
       </Card.Body>
