@@ -9,13 +9,13 @@ input::-webkit-input-placeholder {
   line-height: 3;
 }
 
-.login-form-style {
+.sign-up-form-style {
   margin-top: 13.4% !important;
   background-color: #ffffff !important;
   border: 1px solid #dbdbdb !important;
 }
 
-.login-form-bottom-style {
+.sign-up-form-bottom-style {
   margin-top: 0.9% !important;
   background-color: #ffffff !important;
   border: 1px solid #dbdbdb !important;
@@ -40,11 +40,11 @@ input::-webkit-input-placeholder {
   .content-style {
     margin-left: 0rem !important;
   }
-  .login-form-style {
+  .sign-up-form-style {
     background-color: #fafafa !important;
     border: none !important;
   }
-  .login-form-bottom-style {
+  .sign-up-form-bottom-style {
     background-color: #fafafa !important;
     border: none !important;
   }
@@ -55,11 +55,11 @@ input::-webkit-input-placeholder {
   .content-style {
     margin-left: 0rem !important;
   }
-  .login-form-style {
+  .sign-up-form-style {
     background-color: #fafafa !important;
     border: none !important;
   }
-  .login-form-bottom-style {
+  .sign-up-form-bottom-style {
     background-color: #fafafa !important;
     border: none !important;
   }
