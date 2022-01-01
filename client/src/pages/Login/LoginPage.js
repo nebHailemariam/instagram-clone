@@ -63,8 +63,8 @@ const LoginPage = () => {
               <Col xs={2}></Col>
             </Row>
           </Col>
-          <div class="row" id="appSummary">
-            <div class="col text-center">
+          <div className="row" id="appSummary">
+            <div className="col text-center">
               <Facebook style={{ marginRight: "2%" }} />
               Login with Facebook
             </div>
