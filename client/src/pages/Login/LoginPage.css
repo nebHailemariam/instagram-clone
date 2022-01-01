@@ -1,21 +1,24 @@
-body,
-html {
-  height: 100% !important;
-  background-color: #fafafa;
+.form-control {
+  background-color: #fafafa !important;
+  border-radius: 0px;
+  margin-bottom: 0.3rem;
 }
 
-.light-background-color {
-  background-color: #eeeeee;
-}
-.light-gray-background-color {
-  background-color: #fafafa;
-}
-.light-font-color {
-  color: #8e8e8e;
+input::-webkit-input-placeholder {
+  font-size: 80%;
+  line-height: 3;
 }
 
-.content-style {
-  margin-left: 11rem !important;
+.login-form-style {
+  margin-top: 13.4% !important;
+  background-color: #ffffff !important;
+  border: 1px solid #dbdbdb !important;
+}
+
+.login-form-bottom-style {
+  margin-top: 0.9% !important;
+  background-color: #ffffff !important;
+  border: 1px solid #dbdbdb !important;
 }
 
 /* Large devices (computers, 768px and up) */

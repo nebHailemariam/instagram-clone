@@ -2,9 +2,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Col, Container, Row } from "react-bootstrap";
 import "./App.css";
 import AppNavbar from "./_components/AppNavbar/AppNavbar";
-import Home from "./pages/Home/Home";
+import HomePage from "./pages/Home/HomePage";
 import { Routes, Route } from "react-router-dom";
-import { Profile } from "./pages/Profile/Profile";
+import LoginPage from "./pages/Login/LoginPage";
 
 function App() {
   return (
@@ -14,12 +14,14 @@ function App() {
         <Row>
           <Col className="content-style" sm={6}>
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/profile" element={<Profile />} />
+              <Route path="/" element={<HomePage />} />
             </Routes>
           </Col>
         </Row>
       </Container>
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+      </Routes>
     </div>
   );
 }
