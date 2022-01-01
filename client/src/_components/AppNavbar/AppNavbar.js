@@ -148,7 +148,7 @@ const LoggedInNavbar = () => {
 const AppNavbar = () => {
   const isLoggedIn = useSelector((state) => state.authentication.isLoggedIn);
 
-  return <div>{isLoggedIn ? <></> : LoggedInNavbar()}</div>;
+  return <div>{!isLoggedIn ? <></> : LoggedInNavbar()}</div>;
 };
 
 export default AppNavbar;
