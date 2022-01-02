@@ -1,6 +1,5 @@
 import config from "../_helpers/config";
-import { getAsync, postAsync, putAsync } from "../_helpers/adapters";
-import authStore from "../stores/auth-store";
+import { postAsync } from "../_helpers/adapters";
 
 const userService = {
   // A method for removing user details and token from local storage to logout user
@@ -11,13 +10,13 @@ const userService = {
   // A method for logging in a user
   async login(email, password) {
     try {
-      let user = await postAsync(`${config.apiUrl}/users/login`, {
+      let user = await postAsync(`${config.apiUrl}/api/Users/login`, {
         email,
         password,
       });
 
       // Store user details and JWT token in local storage to keep a user logged in between page refreshes
-      localStorage.setItem("currentUser", user);
+      localStorage.setItem("currentUser", JSON.stringify(user));
       return user;
     } catch (err) {
       throw err;
@@ -27,7 +26,7 @@ const userService = {
   // A method for registering a user
   async register(fullName, email, password) {
     try {
-      await postAsync(`${config.apiUrl}/users/signup`, {
+      await postAsync(`${config.apiUrl}/api/Users/signup`, {
         fullName,
         email,
         password,

@@ -3,10 +3,13 @@ import { Col, Row } from "react-bootstrap";
 import LoginForm from "./LoginForm";
 import Logo from "../../assets/imgs/logo.png";
 import { Facebook } from "react-bootstrap-icons";
+import { useDispatch } from "react-redux";
+import AuthenticationActions from "../../_actions/authentication.actions";
 
 const LoginPage = () => {
-  const submit = (values) => {
-    console.log(values);
+  const dispatch = useDispatch();
+  const onClickSubmit = ({ email, password }) => {
+    dispatch(AuthenticationActions.login(email, password));
   };
 
   return (
@@ -29,7 +32,7 @@ const LoginPage = () => {
             <Col style={{ paddingBottom: "10%" }}>
               <div>
                 <div>
-                  <LoginForm onSubmit={submit} />
+                  <LoginForm onSubmit={onClickSubmit} />
                 </div>
               </div>
             </Col>

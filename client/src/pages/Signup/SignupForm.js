@@ -21,8 +21,6 @@ const validate = (values) => {
     errors.password = "Password must be less than 25 characters";
   }
 
-  console.log(errors);
-
   return errors;
 };
 
