@@ -1,4 +1,4 @@
-import handleResponse from "./handle-response";
+import HandleResponse from "./handle-response";
 import { jwtInterceptor } from "./jwt-interceptor";
 
 //  Wrapper function that wraps HTTP GET method
@@ -12,9 +12,7 @@ export async function getAsync(url) {
   // try catch block to catch network error
   try {
     const response = await fetch(url, requestOptions);
-    return handleResponse(response, async () => {
-      return fetch(url, await jwtInterceptor(url, requestOptions));
-    });
+    return await HandleResponse(response);
   } catch (e) {
     return Promise.reject("Network Error");
   }
@@ -28,14 +26,11 @@ export async function postAsync(url, body) {
     body: JSON.stringify(body),
   };
   requestOptions = await jwtInterceptor(url, requestOptions);
-
   // try catch block to catch network error
   try {
     const response = await fetch(url, requestOptions);
-    return handleResponse(response, async () => {
-      return fetch(url, await jwtInterceptor(url, requestOptions));
-    });
-  } catch (e) {
+    return await HandleResponse(response);
+  } catch (err) {
     return Promise.reject("Network Error");
   }
 }
@@ -52,9 +47,7 @@ export async function putAsync(url, body) {
   // try catch block to catch network error
   try {
     const response = await fetch(url, requestOptions);
-    return handleResponse(response, async () => {
-      return fetch(url, await jwtInterceptor(url, requestOptions));
-    });
+    return await HandleResponse(response);
   } catch (e) {
     return Promise.reject("Network Error");
   }
@@ -71,9 +64,7 @@ export async function deleteAsync(url) {
   // try catch block to catch network error
   try {
     const response = await fetch(url, requestOptions);
-    return handleResponse(response, async () => {
-      return fetch(url, await jwtInterceptor(url, requestOptions));
-    });
+    return await HandleResponse(response);
   } catch (e) {
     return Promise.reject("Network Error");
   }
