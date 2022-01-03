@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import {
   Col,
   Container,
@@ -151,4 +151,8 @@ const AppNavbar = () => {
   return <div>{!isLoggedIn ? <></> : LoggedInNavbar()}</div>;
 };
 
-export default AppNavbar;
+function mapStateToProps(state) {
+  return { isLoggedIn: state.authentication.isLoggedIn };
+}
+
+export default connect(mapStateToProps)(AppNavbar);

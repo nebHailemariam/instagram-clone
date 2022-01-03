@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 import SignupForm from "./SignupForm";
 import Logo from "../../assets/imgs/logo.png";
+import { connect, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const SignupPage = () => {
   const submit = (values) => {};
+  const isLoggedIn = useSelector((state) => state.authentication.isLoggedIn);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/");
+    }
+  }, [isLoggedIn, navigate]);
 
   return (
     <div className="container">
@@ -56,4 +66,8 @@ const SignupPage = () => {
   );
 };
 
-export default SignupPage;
+function mapStateToProps(state) {
+  return { isLoggedIn: state.authentication.isLoggedIn };
+}
+
+export default connect(mapStateToProps)(SignupPage);

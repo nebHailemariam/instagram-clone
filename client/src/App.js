@@ -6,6 +6,7 @@ import HomePage from "./pages/Home/HomePage";
 import { Routes, Route } from "react-router-dom";
 import LoginPage from "./pages/Login/LoginPage";
 import SignupPage from "./pages/Signup/SignupPage";
+import PrivateRoute from "./_components/PrivateRoute/PrivateRoute";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
         <Row>
           <Col className="content-style" sm={6}>
             <Routes>
-              <Route path="/" element={<HomePage />} />
+              <Route path="/" element={<PrivateRoute component={HomePage} />} />
             </Routes>
           </Col>
         </Row>
