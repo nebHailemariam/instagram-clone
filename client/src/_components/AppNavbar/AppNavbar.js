@@ -1,4 +1,4 @@
-import { connect, useSelector } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import {
   Col,
   Container,
@@ -24,9 +24,14 @@ import {
 } from "react-bootstrap-icons";
 import "./AppNavbar.css";
 import { useState } from "react";
+import authenticationActions from "../../_actions/authentication.actions";
+import { useNavigate } from "react-router-dom";
 
 const LoggedInNavbar = () => {
   const [showProfileDropDown, setShowProfileDropDown] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const ToggleProfileDropDown = () => {
     setShowProfileDropDown(!showProfileDropDown);
   };
@@ -126,7 +131,14 @@ const LoggedInNavbar = () => {
                                 Switch Account
                               </NavDropdown.Item>
                               <NavDropdown.Divider />
-                              <NavDropdown.Item onClick={ToggleProfileDropDown}>
+                              <NavDropdown.Item
+                                onClick={() => {
+                                  ToggleProfileDropDown();
+                                  dispatch(
+                                    authenticationActions.logout(navigate)
+                                  );
+                                }}
+                              >
                                 Logout
                               </NavDropdown.Item>
                             </NavDropdown>
@@ -147,8 +159,9 @@ const LoggedInNavbar = () => {
 
 const AppNavbar = () => {
   const isLoggedIn = useSelector((state) => state.authentication.isLoggedIn);
+  const loggedInNavbar = LoggedInNavbar();
 
-  return <div>{!isLoggedIn ? <></> : LoggedInNavbar()}</div>;
+  return <div>{!isLoggedIn ? <></> : loggedInNavbar}</div>;
 };
 
 function mapStateToProps(state) {

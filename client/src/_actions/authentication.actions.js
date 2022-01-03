@@ -26,7 +26,8 @@ const login = (email, password, navigate) => {
 const logout = (navigate) => {
   return (dispatch) => {
     dispatch(request());
-    navigate("/signup");
+    localStorage.removeItem("currentUser");
+    navigate("/login");
   };
   function request() {
     return { type: userConstants.LOGOUT };
