@@ -1,15 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 import LoginForm from "./LoginForm";
 import Logo from "../../assets/imgs/logo.png";
 import { Facebook } from "react-bootstrap-icons";
 import { useDispatch } from "react-redux";
-import AuthenticationActions from "../../_actions/authentication.actions";
+import authenticationActions from "../../_actions/authentication.actions";
+import { useNavigate } from "react-router-dom";
+import { connect, useSelector } from "react-redux";
 
-const LoginPage = () => {
+const LoginPage = (props) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const isLoggedIn = useSelector((state) => state.authentication.isLoggedIn);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/");
+    }
+  }, [isLoggedIn, navigate]);
+
   const onClickSubmit = ({ email, password }) => {
-    dispatch(AuthenticationActions.login(email, password));
+    dispatch(authenticationActions.login(email, password, navigate));
   };
 
   return (
@@ -100,4 +112,8 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+function mapStateToProps(state) {
+  return { isLoggedIn: state.authentication.isLoggedIn };
+}
+
+export default connect(mapStateToProps)(LoginPage);

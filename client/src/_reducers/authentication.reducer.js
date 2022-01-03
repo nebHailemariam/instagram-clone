@@ -9,11 +9,16 @@ const authentication = (state = initialUserState, action) => {
   if (action.type === userConstants.LOGIN_REQUEST) {
     return { ...state, loading: true };
   } else if (action.type === userConstants.LOGIN_SUCCESS) {
-    return { ...state, user: action.payload.user, loading: false };
+    return {
+      ...state,
+      user: action.payload.user,
+      loading: false,
+      isLoggedIn: true,
+    };
   } else if (action.type === userConstants.LOGIN_FAILURE) {
     return { ...state, user: {}, loading: false, error: action.payload.error };
   } else if (action.type === userConstants.LOGOUT) {
-    return { user: {}, loading: false };
+    return { user: {}, loading: false, isLoggedIn: false, error: null };
   } else if (action.type === userConstants.REGISTRATION_REQUEST) {
     return { ...state, loading: true };
   } else if (action.type === userConstants.REGISTRATION_SUCCESS) {

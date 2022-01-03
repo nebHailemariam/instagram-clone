@@ -1,14 +1,13 @@
 import userService from "../_services/user.service";
 import { userConstants } from "../_constants/user.constants";
-// import history from "../_helpers/history";
 
-const login = (email, password) => {
+const login = (email, password, navigate) => {
   return async (dispatch) => {
     dispatch(request());
     try {
       const user = await userService.login(email, password);
       dispatch(success(user));
-      // history.push("/");
+      navigate("/");
     } catch (error) {
       dispatch(failure(error));
     }
@@ -24,17 +23,18 @@ const login = (email, password) => {
   }
 };
 
-const logout = () => {
+const logout = (navigate) => {
   return (dispatch) => {
     dispatch(request());
+    navigate("/signup");
   };
   function request() {
     return { type: userConstants.LOGOUT };
   }
 };
 
-const AuthenticationActions = {
+const authenticationActions = {
   login,
   logout,
 };
-export default AuthenticationActions;
+export default authenticationActions;
