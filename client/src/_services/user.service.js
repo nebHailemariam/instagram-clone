@@ -24,10 +24,11 @@ const userService = {
   },
 
   // A method for registering a user
-  async register(fullName, email, password, confirmPassword) {
+  async register(firstName, lastName, email, password, confirmPassword) {
     try {
       await postAsync(`${config.apiUrl}/api/Users/register`, {
-        fullName,
+        firstName,
+        lastName,
         email,
         password,
         confirmPassword,
