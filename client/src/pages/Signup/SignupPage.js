@@ -2,19 +2,32 @@ import React, { useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 import SignupForm from "./SignupForm";
 import Logo from "../../assets/imgs/logo.png";
-import { connect, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { connect, useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { registrationActions } from "../../_actions/registration.actions";
 
 const SignupPage = () => {
-  const submit = (values) => {};
   const isLoggedIn = useSelector((state) => state.authentication.isLoggedIn);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (isLoggedIn) {
       navigate("/");
     }
   }, [isLoggedIn, navigate]);
+
+  const onClickSubmit = ({ fullName, email, password }) => {
+    dispatch(
+      registrationActions.register(
+        fullName,
+        email,
+        password,
+        password,
+        navigate
+      )
+    );
+  };
 
   return (
     <div className="container">
@@ -36,7 +49,7 @@ const SignupPage = () => {
             <Col style={{ paddingBottom: "10%" }}>
               <div>
                 <div>
-                  <SignupForm onSubmit={submit} />
+                  <SignupForm onSubmit={onClickSubmit} />
                 </div>
               </div>
             </Col>
@@ -54,7 +67,12 @@ const SignupPage = () => {
             >
               <Col xs={3}></Col>
               Have an account?
-              <Col style={{ color: "#3BB0FD" }}>Login </Col>
+              <Col style={{ color: "#3BB0FD" }}>
+                {" "}
+                <Link to="/login" style={{ textDecoration: "none" }}>
+                  Login
+                </Link>{" "}
+              </Col>
             </Row>
           </Col>
           <Col>

@@ -1,27 +1,28 @@
 import userService from "../_services/user.service";
 import { userConstants } from "../_constants/user.constants";
 
-export const registrationActions = {
-  register,
-};
-
-const register = (fullName, email, password) => {
+const register = (fullName, email, password, confirmPassword, navigate) => {
   return async (dispatch) => {
     dispatch(request());
     try {
-      await userService.register(fullName, email, password);
+      await userService.register(fullName, email, password, confirmPassword);
       dispatch(success());
+      navigate("/login");
     } catch (error) {
       dispatch(failure(error));
     }
   };
-  request = () => {
+  function request() {
     return { type: userConstants.REGISTRATION_REQUEST };
-  };
-  success = () => {
+  }
+  function success() {
     return { type: userConstants.REGISTRATION_SUCCESS };
-  };
-  failure = (error) => {
+  }
+  function failure(error) {
     return { type: userConstants.REGISTRATION_FAILURE, payload: { error } };
-  };
+  }
+};
+
+export const registrationActions = {
+  register,
 };

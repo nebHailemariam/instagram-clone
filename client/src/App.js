@@ -12,6 +12,10 @@ function App() {
   return (
     <div className="App">
       <AppNavbar />
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />{" "}
+        <Route path="/signup" element={<SignupPage />} />
+      </Routes>
       <Container>
         <Row>
           <Col className="content-style" sm={6}>
@@ -21,10 +25,6 @@ function App() {
           </Col>
         </Row>
       </Container>
-      <Routes>
-        <Route path="/login" element={<LoginPage />} />{" "}
-        <Route path="/signup" element={<SignupPage />} />
-      </Routes>
     </div>
   );
 }
