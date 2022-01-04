@@ -5,7 +5,7 @@ import Logo from "../../assets/imgs/logo.png";
 import { Facebook } from "react-bootstrap-icons";
 import { useDispatch } from "react-redux";
 import authenticationActions from "../../_actions/authentication.actions";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { connect, useSelector } from "react-redux";
 
 const LoginPage = (props) => {
@@ -89,7 +89,6 @@ const LoginPage = (props) => {
           </Col>
         </Col>
       </Row>
-
       <Row className="justify-content-md-center">
         <Col className="login-form-bottom-style" md={3}>
           <br />
@@ -100,7 +99,11 @@ const LoginPage = (props) => {
             >
               <Col xs={2}></Col>
               Don't have an account?
-              <Col style={{ color: "#3BB0FD" }}>Sign up</Col>
+              <Col style={{ color: "#3BB0FD" }}>
+                <Link to="/signup" style={{ textDecoration: "none" }}>
+                  Sign up
+                </Link>
+              </Col>
             </Row>
           </Col>
           <Col>

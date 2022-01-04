@@ -7,6 +7,9 @@ const HandleResponse = (response) => {
       if (response.status === 401) {
         // auto logout if 401 response returned from api
         userService.logout();
+        const error = "Unauthorized";
+        window.location.assign("/login");
+        return Promise.reject(error);
       }
 
       const error = (data && data.message) || response.statusText;

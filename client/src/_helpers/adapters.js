@@ -31,7 +31,7 @@ export async function postAsync(url, body) {
     const response = await fetch(url, requestOptions);
     return await HandleResponse(response);
   } catch (err) {
-    return Promise.reject("Network Error");
+    return Promise.reject(err);
   }
 }
 
