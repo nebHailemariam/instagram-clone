@@ -58,7 +58,7 @@ let LoginFrom = (props) => {
         <Col>
           <Field
             name="password"
-            type="text"
+            type="password"
             component={renderField}
             label="Password"
             className="form-control"

@@ -5,7 +5,16 @@ const register = (fullName, email, password, confirmPassword, navigate) => {
   return async (dispatch) => {
     dispatch(request());
     try {
-      await userService.register(fullName, email, password, confirmPassword);
+      let firstName = fullName.substr(0, fullName.indexOf(" "));
+      let lastName = fullName.substr(fullName.indexOf(" ") + 1);
+
+      await userService.register(
+        firstName,
+        lastName,
+        email,
+        password,
+        confirmPassword
+      );
       dispatch(success());
       navigate("/login");
     } catch (error) {
