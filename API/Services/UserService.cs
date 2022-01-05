@@ -41,14 +41,6 @@ namespace API.Services
             return token;
         }
 
-        public SigningCredentials GetSigningCredentials()
-        {
-            var jwtSettings = _configuration.GetSection("JWTSettings");
-            var key = Encoding.UTF8.GetBytes(jwtSettings.GetSection("securityKey").Value);
-            var secret = new SymmetricSecurityKey(key);
-            return new SigningCredentials(secret, SecurityAlgorithms.HmacSha256);
-        }
-
         public JwtSecurityToken GenerateTokenOptions(SigningCredentials signingCredentials, List<Claim> claims)
         {
             var jwtSettings = _configuration.GetSection("JWTSettings");
@@ -73,6 +65,14 @@ namespace API.Services
                 claims.Add(new Claim(ClaimTypes.Role, role));
             }
             return claims;
+        }
+
+        public SigningCredentials GetSigningCredentials()
+        {
+            var jwtSettings = _configuration.GetSection("JWTSettings");
+            var key = Encoding.UTF8.GetBytes(jwtSettings.GetSection("securityKey").Value);
+            var secret = new SymmetricSecurityKey(key);
+            return new SigningCredentials(secret, SecurityAlgorithms.HmacSha256);
         }
 
         public async Task<UserDto> RegisterAsync(UserRegistrationDto userRegistrationDto)

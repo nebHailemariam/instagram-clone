@@ -148,7 +148,7 @@ builder.Services.AddCors(options =>
         });
 });
 
-// Policies
+// Configure policies.
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy(PolicyConstants.IS_USER, policy => policy.RequireRole(RoleConstants.USER_ROLE));
