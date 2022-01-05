@@ -5,7 +5,6 @@ namespace API.Data
 {
     public interface IUserRepository
     {
-
         Task AddRoleAsync(ApplicationUser user, string role);
         Task<bool> CheckPasswordAsync(ApplicationUser user, string password);
         Task<ApplicationUser> CreateAsync(ApplicationUser user, string password);

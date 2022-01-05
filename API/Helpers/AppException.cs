@@ -13,6 +13,5 @@ namespace API.Helpers
             Detail = detail;
             StatusCode = statusCode;
         }
-
     }
 }

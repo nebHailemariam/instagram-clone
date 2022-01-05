@@ -8,7 +8,7 @@ namespace API.Helpers
     {
         public AutoMapperProfiles()
         {
-            CreateMap<UserRegistrationDto, ApplicationUser>().ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.FirstName));
+            CreateMap<UserRegistrationDto, ApplicationUser>();
             CreateMap<ApplicationUser, UserDto>();
         }
     }

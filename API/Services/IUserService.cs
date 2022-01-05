@@ -9,9 +9,9 @@ namespace API.Services
     public interface IUserService
     {
         Task<string> LoginAsync(UserLoginDto userLoginDto);
-        SigningCredentials GetSigningCredentials();
         JwtSecurityToken GenerateTokenOptions(SigningCredentials signingCredentials, List<Claim> claims);
         Task<List<Claim>> GetClaimsAsync(ApplicationUser user);
+        SigningCredentials GetSigningCredentials();
         Task<UserDto> RegisterAsync(UserRegistrationDto userRegistrationDto);
         Task UpdatePassword(string userId, string password);
     }
