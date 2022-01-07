@@ -1,3 +1,7 @@
+using System.Net;
+using API.Domain.Enums;
+using API.Helpers;
+using API.Models;
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
 
@@ -10,7 +14,25 @@ namespace API.Services
             IConfiguration configuration)
         {
             _cloudinary = new Cloudinary(new Account(
-                configuration.GetConnectionString("Cloudinary:Cloud"), configuration.GetConnectionString("Cloudinary:ApiKey"), configuration.GetConnectionString("Cloudinary:ApiSecret")));
+                configuration["Cloudinary:Cloud"], configuration["Cloudinary:ApiKey"], configuration["Cloudinary:ApiSecret"]
+            ));
+        }
+
+        public async Task<Post> Upload(Post post, IFormFile file)
+        {
+            if (file.ContentType.Contains("image"))
+            {
+                post.FileType = FileType.Picture;
+                post.FileUrl = await UploadPicture(file);
+                return post;
+            }
+            else if (file.ContentType.Contains("video"))
+            {
+                post.FileType = FileType.Video;
+                post.FileUrl = await UploadVideo(file);
+                return post;
+            }
+            throw new AppException("Invalid file type", statusCode: HttpStatusCode.BadRequest);
         }
 
         public async Task<string> UploadPicture(IFormFile file)
