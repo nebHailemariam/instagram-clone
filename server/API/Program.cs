@@ -129,10 +129,12 @@ builder.Services.AddAuthentication(opt =>
 });
 
 // Add repositories to Dependency injection container.
-
+builder.Services.AddScoped<IPostRepository, PostRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 // Add services to Dependency injection container.
+builder.Services.AddScoped<ICloudinaryService, CloudinaryService>();
+builder.Services.AddScoped<IPostService, PostService>();
 builder.Services.AddScoped<IUserService, UserService>();
 
 // Add CORS policy 

@@ -10,6 +10,7 @@ namespace API.Helpers
         {
             CreateMap<UserRegistrationDto, ApplicationUser>();
             CreateMap<ApplicationUser, UserDto>();
+            CreateMap<PostCreateDto, Post>();
         }
     }
 }
