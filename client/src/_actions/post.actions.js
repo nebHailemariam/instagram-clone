@@ -1,4 +1,4 @@
-import { postConstants } from "../_constants/post.constats";
+import { postConstants } from "../_constants/post.constants";
 import postService from "../_services/post.service";
 
 const getPosts = () => {
@@ -22,6 +22,27 @@ const getPosts = () => {
   }
 };
 
+const addPost = (post) => {
+  return async (dispatch) => {
+    dispatch(request());
+    try {
+      dispatch(success(post));
+    } catch (error) {
+      dispatch(failure(error));
+    }
+  };
+  function request() {
+    return { type: postConstants.ADD_POST_REQUEST };
+  }
+  function success(post) {
+    return { type: postConstants.ADD_POST_SUCCESS, payload: { post } };
+  }
+  function failure(error) {
+    return { type: postConstants.ADD_POST_FAILURE, payload: { error } };
+  }
+};
+
 export const postActions = {
   getPosts,
+  addPost,
 };
