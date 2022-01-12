@@ -45,7 +45,7 @@ const LoggedInNavbar = () => {
                 <Container>
                   <Row>
                     <Col className="brand-style content-style">
-                      <Navbar.Brand href="#home">
+                      <Navbar.Brand href="/">
                         <img
                           src={logo}
                           width="110"

@@ -8,7 +8,6 @@ export async function getAsync(url) {
     headers: { "Content-Type": "application/json" },
   };
   requestOptions = await jwtInterceptor(url, requestOptions);
-
   // try catch block to catch network error
   try {
     const response = await fetch(url, requestOptions);

@@ -4,20 +4,21 @@ import { postAsync } from "../_helpers/adapters";
 const userService = {
   // A method for removing user details and token from local storage to logout user
   logout() {
-    localStorage.removeItem("currentUser");
+    localStorage.removeItem("currentUserToken");
   },
 
   // A method for logging in a user
   async login(email, password) {
     try {
-      let user = await postAsync(`${config.apiUrl}/api/Users/login`, {
+      let res = await postAsync(`${config.apiUrl}/api/Users/login`, {
         email,
         password,
       });
 
       // Store user details and JWT token in local storage to keep a user logged in between page refreshes
-      localStorage.setItem("currentUser", JSON.stringify(user));
-      return user;
+      localStorage.setItem("currentUserToken", JSON.stringify(res.token));
+      console.log(localStorage.getItem("currentUserToken"));
+      return res;
     } catch (err) {
       throw err;
     }
