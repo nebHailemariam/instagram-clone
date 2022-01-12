@@ -12,6 +12,7 @@ using API.MiddelWare;
 using API.Services;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using API.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -128,6 +129,9 @@ builder.Services.AddAuthentication(opt =>
     };
 });
 
+// Enable SignalR
+builder.Services.AddSignalR();
+
 // Add repositories to Dependency injection container.
 builder.Services.AddScoped<IPostRepository, PostRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
@@ -183,5 +187,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapHub<PostHub>("/postHub");
 
 app.Run();
