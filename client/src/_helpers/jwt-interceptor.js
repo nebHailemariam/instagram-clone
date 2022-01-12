@@ -2,13 +2,12 @@ import config from "./config";
 
 // Adds Authorization header to requests that go to Backend API
 export async function jwtInterceptor(url, requestOptions) {
-  const token = localStorage.getItem("currentUser");
-  const isLoggedIn = token;
+  const token = JSON.parse(localStorage.getItem("currentUserToken"));
   const isApiUrl = url.startsWith(config.apiUrl);
-  if (isLoggedIn && isApiUrl) {
+  if (token && isApiUrl) {
     requestOptions = {
       ...requestOptions,
-      headers: { ...requestOptions.headers, Authorization: `Bearer ${token}` },
+      headers: { ...requestOptions.headers, Authorization: "Bearer " + token },
     };
   }
   return requestOptions;

@@ -5,8 +5,8 @@ const login = (email, password, navigate) => {
   return async (dispatch) => {
     dispatch(request());
     try {
-      const user = await userService.login(email, password);
-      dispatch(success(user));
+      const userToken = await userService.login(email, password);
+      dispatch(success(userToken));
       navigate("/");
     } catch (error) {
       dispatch(failure(error));
@@ -15,8 +15,8 @@ const login = (email, password, navigate) => {
   function request() {
     return { type: userConstants.LOGIN_REQUEST };
   }
-  function success(user) {
-    return { type: userConstants.LOGIN_SUCCESS, payload: { user } };
+  function success(userToken) {
+    return { type: userConstants.LOGIN_SUCCESS, payload: { userToken } };
   }
   function failure(error) {
     return { type: userConstants.LOGIN_FAILURE, payload: { error } };
@@ -26,7 +26,7 @@ const login = (email, password, navigate) => {
 const logout = (navigate) => {
   return (dispatch) => {
     dispatch(request());
-    localStorage.removeItem("currentUser");
+    localStorage.removeItem("currentUserToken");
     navigate("/login");
   };
   function request() {

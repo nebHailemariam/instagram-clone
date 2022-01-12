@@ -16,7 +16,7 @@ const Post = (props) => {
       <Card.Header style={{ background: "#ffffff" }}>
         <Row>
           <Col>
-            {props.profilePicture ? (
+            {!props.profilePicture ? (
               <PersonCircle size="2rem" />
             ) : (
               <img
@@ -27,7 +27,8 @@ const Post = (props) => {
                 alt="post"
               ></img>
             )}
-            &nbsp; &nbsp; Avocado
+            &nbsp; &nbsp;
+            {`${props.post.applicationUser.firstName} ${props.post.applicationUser.lastName}`}
           </Col>
           <Col sm={1} xs={2}>
             <ThreeDots />
@@ -35,7 +36,7 @@ const Post = (props) => {
         </Row>
       </Card.Header>
 
-      <Card.Img src="https://www.freecodecamp.org/news/content/images/size/w2000/2021/06/5f9c9b00740569d1a4ca291b.jpg" />
+      <Card.Img src={props.post.fileUrl} />
       <Card.Body>
         <Row>
           <Col>
