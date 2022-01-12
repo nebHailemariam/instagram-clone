@@ -64,7 +64,7 @@ namespace API.Data
 
         public async Task<List<Post>> GetAsync()
         {
-            return await _context.Posts.Include(v => v.ApplicationUser).ToListAsync();
+            return await _context.Posts.Include(p => p.ApplicationUser).OrderByDescending(p => p.CreatedAt).ToListAsync();
         }
 
         public async Task<Post> GetByIdAsync(string id)
