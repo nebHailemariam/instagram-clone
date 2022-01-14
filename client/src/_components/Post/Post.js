@@ -1,5 +1,5 @@
 import "./Post.css";
-import { Card, Col, Row } from "react-bootstrap";
+import { Card, Col, Placeholder, Row } from "react-bootstrap";
 import {
   Bookmark,
   Chat,
@@ -9,8 +9,11 @@ import {
   Share,
 } from "react-bootstrap-icons";
 import { ThreeDots } from "react-bootstrap-icons";
+import { useState } from "react";
 
 const Post = (props) => {
+  const [loaded, setLoaded] = useState(false);
+
   return (
     <Card>
       <Card.Header style={{ background: "#ffffff" }}>
@@ -28,15 +31,27 @@ const Post = (props) => {
               ></img>
             )}
             &nbsp; &nbsp;
-            {`${props.post.applicationUser.firstName} ${props.post.applicationUser.lastName}`}
+            {props.post ? (
+              <span>{`${props.post?.applicationUser.firstName} ${props.post?.applicationUser.lastName}`}</span>
+            ) : (
+              <div></div>
+            )}
           </Col>
           <Col sm={1} xs={2}>
             <ThreeDots />
           </Col>
         </Row>
       </Card.Header>
-
-      <Card.Img src={props.post.fileUrl} />
+      {loaded ? null : (
+        <Placeholder as={Card.Title} animation="glow">
+          <Placeholder xs={12} style={{ paddingBottom: "75%" }} />
+        </Placeholder>
+      )}
+      <Card.Img
+        src={props.post?.fileUrl}
+        style={loaded ? {} : { display: "none" }}
+        onLoad={() => setLoaded(true)}
+      />
       <Card.Body>
         <Row>
           <Col>
