@@ -20,6 +20,13 @@ namespace API.Controllers
             _postService = postService;
         }
 
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get([FromRoute] string id)
+        {
+            return Ok(await _postRepository.GetByIdAsync(id));
+        }
+
         [HttpGet]
         public async Task<IActionResult> Get()
         {
