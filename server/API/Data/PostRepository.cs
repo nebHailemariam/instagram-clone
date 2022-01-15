@@ -62,9 +62,11 @@ namespace API.Data
             throw new NotImplementedException();
         }
 
-        public async Task<List<Post>> GetAsync()
+        public async Task<PagedList<Post>> GetAsync(QueryStringParameters queryStringParameters)
         {
-            return await _context.Posts.Include(p => p.ApplicationUser).OrderByDescending(p => p.CreatedAt).ToListAsync();
+            return await PagedList<Post>.ToPagedList(_context.Posts.Include(p => p.ApplicationUser).OrderByDescending(p => p.CreatedAt),
+                queryStringParameters.PageNumber,
+                queryStringParameters.PageSize);
         }
 
         public async Task<Post> GetByIdAsync(string id)

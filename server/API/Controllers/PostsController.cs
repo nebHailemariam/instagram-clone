@@ -1,5 +1,6 @@
 using API.Data;
 using API.Dtos;
+using API.Helpers;
 using API.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -28,9 +29,11 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get([FromQuery] QueryStringParameters queryStringParamenter)
         {
-            return Ok(await _postRepository.GetAsync());
+            var posts = await _postRepository.GetAsync(queryStringParamenter);
+            Response.AddPagination(ref posts);
+            return Ok(posts);
         }
 
         [HttpPost]
