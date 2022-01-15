@@ -10,9 +10,11 @@ import {
 } from "react-bootstrap-icons";
 import { ThreeDots } from "react-bootstrap-icons";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Post = (props) => {
   const [loaded, setLoaded] = useState(false);
+  console.log(props.post);
 
   return (
     <Card>
@@ -47,11 +49,13 @@ const Post = (props) => {
           <Placeholder xs={12} style={{ paddingBottom: "75%" }} />
         </Placeholder>
       )}
-      <Card.Img
-        src={props.post?.fileUrl}
-        style={loaded ? {} : { display: "none" }}
-        onLoad={() => setLoaded(true)}
-      />
+      <Link to={`/posts/${props.post?.id}`} style={{ textDecoration: "none" }}>
+        <Card.Img
+          src={props.post?.fileUrl}
+          style={loaded ? {} : { display: "none" }}
+          onLoad={() => setLoaded(true)}
+        />
+      </Link>
       <Card.Body>
         <Row>
           <Col>

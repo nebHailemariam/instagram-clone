@@ -7,6 +7,7 @@ import { Routes, Route } from "react-router-dom";
 import LoginPage from "./pages/Login/LoginPage";
 import SignupPage from "./pages/Signup/SignupPage";
 import PrivateRoute from "./_components/PrivateRoute/PrivateRoute";
+import PostPage from "./pages/Post/PostPage";
 
 function App() {
   return (
@@ -21,6 +22,10 @@ function App() {
           <Col className="content-style" sm={6}>
             <Routes>
               <Route path="/" element={<PrivateRoute component={HomePage} />} />
+              <Route
+                path="/posts/:id"
+                element={<PrivateRoute component={PostPage} />}
+              />
             </Routes>
           </Col>
         </Row>
