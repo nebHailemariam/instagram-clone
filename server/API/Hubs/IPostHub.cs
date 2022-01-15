@@ -5,6 +5,6 @@ namespace API.Hubs
 {
     public interface IPostHub
     {
-        Task ReceiveNewPost(Post newPost);
+        Task SendNewPost(Post newPost);
     }
 }
