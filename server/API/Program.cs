@@ -178,6 +178,9 @@ if (app.Environment.IsDevelopment())
 // Add global error handler.
 app.UseMiddleware<ErrorHandlerMiddleware>();
 
+// Add web socket middleware
+app.UseMiddleware<WebSocketsMiddleware>();
+
 app.UseHttpsRedirection();
 
 app.UseCors(MyAllowSpecificOrigins);

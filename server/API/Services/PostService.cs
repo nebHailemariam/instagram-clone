@@ -28,7 +28,7 @@ namespace API.Services
             post.ApplicationUserId = currentUserId;
             post = await _postRepository.CreateAsync(post, postCreateDto.File);
             post.ApplicationUser = await _userRepository.GetByIdAsync(currentUserId);
-            await _postHub.Clients.All.ReceiveNewPost(post);
+            await _postHub.Clients.All.SendNewPost(post);
             return post;
         }
     }
