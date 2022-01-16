@@ -7,7 +7,6 @@ using API.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using AutoMapper;
 using API.MiddelWare;
 using API.Services;
 using System.Text.Json;
@@ -101,12 +100,6 @@ builder.Services.Configure<IdentityOptions>(options =>
 
 // Configure Automapper.
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-var mappingConfig = new MapperConfiguration(mc =>
-{
-    mc.AddProfile(new AutoMapperProfiles());
-});
-IMapper mapper = mappingConfig.CreateMapper();
-builder.Services.AddSingleton(mapper);
 
 // Configure JWT settings.
 var jwtSettings = builder.Configuration.GetSection("JWTSettings");

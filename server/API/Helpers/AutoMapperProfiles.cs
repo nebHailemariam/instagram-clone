@@ -11,6 +11,7 @@ namespace API.Helpers
             CreateMap<UserRegistrationDto, ApplicationUser>();
             CreateMap<ApplicationUser, UserDto>();
             CreateMap<PostCreateDto, Post>();
+            CreateMap(typeof(PagedList<>), typeof(PagedList<>)).ConvertUsing(typeof(PagedListTypeConverter<,>));
         }
     }
 }
