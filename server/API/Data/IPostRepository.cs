@@ -1,3 +1,4 @@
+using API.Helpers;
 using API.Models;
 
 namespace API.Data
@@ -6,7 +7,7 @@ namespace API.Data
     {
         Task<Post> CreateAsync(Post post, IFormFile formFile);
         Task DeleteByIdAsync(string id);
-        Task<List<Post>> GetAsync();
+        Task<PagedList<Post>> GetAsync(QueryStringParameters queryStringParameters);
         Task<Post> GetByIdAsync(string id);
     }
 }
