@@ -14,7 +14,6 @@ import { Link } from "react-router-dom";
 
 const Post = (props) => {
   const [loaded, setLoaded] = useState(false);
-  console.log(props.post);
 
   return (
     <Card>
