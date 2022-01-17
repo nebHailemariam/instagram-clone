@@ -1,8 +1,8 @@
 import userService from "../_services/user.service";
 
 const HandleResponse = (response) => {
-  return response.text().then((text) => {
-    const data = text && JSON.parse(text);
+  return response.json().then((responseJson) => {
+    const data = responseJson;
     if (!response.ok) {
       if (response.status === 401) {
         // auto logout if 401 response returned from api
@@ -16,7 +16,13 @@ const HandleResponse = (response) => {
       return Promise.reject(error);
     }
 
-    return data;
+    let paginationInfo = {};
+
+    for (let entry of response.headers) {
+      if (entry[0] === "pagination") paginationInfo = JSON.parse(entry[1]);
+    }
+
+    return { data, paginationInfo };
   });
 };
 

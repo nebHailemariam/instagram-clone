@@ -16,7 +16,7 @@ const userService = {
       });
 
       // Store user details and JWT token in local storage to keep a user logged in between page refreshes
-      localStorage.setItem("currentUserToken", JSON.stringify(res.token));
+      localStorage.setItem("currentUserToken", JSON.stringify(res.data.token));
       return res;
     } catch (err) {
       throw err;
