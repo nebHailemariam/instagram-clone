@@ -5,8 +5,8 @@ const getPosts = () => {
   return async (dispatch) => {
     dispatch(request());
     try {
-      const posts = await postService.getPosts();
-      dispatch(success(posts));
+      const res = await postService.getPosts();
+      dispatch(success(res.data));
     } catch (error) {
       dispatch(failure(error));
     }
